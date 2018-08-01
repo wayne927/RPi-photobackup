@@ -1,0 +1,4 @@
+sending incremental file list
+
+sent 135 bytes  received 14 bytes  298.00 bytes/sec
+total size is 38.25M  speedup is 256,688.79 (DRY RUN)

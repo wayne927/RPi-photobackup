@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="jquery.min.js"></script>
+<script>
+
+function getData() {
+    $.get("output.txt", function(data, status){
+        var str = data;
+        str = str.replace(" ", "&nbsp;");
+        str = str.split("\n").join("<br>");
+        $("#content").html(str);
+    });
+}
+
+$(document).ready(function(){
+    setInterval(getData, 500);
+});
+</script>
+<style>
+body { font-family: monospace; }
+</style>
+</head>
+<body>
+
+<div id="content"></div>
+
+</body>
+</html>

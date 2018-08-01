@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
+<script src="jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $.get("cgi-bin/main.py", function(data, status){
+        $("#content").html(data);
+    });
+
+});
+
+function shutdown_confirm() {
+    var rc = confirm("Shutting down now - are you sure?");
+
+    if (rc == true) {
+        window.location.href = "/cgi-bin/shutdown.py";
+    } else {
+        return;
+    }
+}
+</script>
+
+<style>
+body {
+    font-family: sans-serif;
+}
+#shutdownlink {
+    line-height: 100px;
+    color: red;
+    font-weight: bold;
+    cursor: pointer;
+}
+</style>
+</head>
+<body>
+
+<div id="content"></div>
+
+<p><a href="sync_status.html">Sync status</a></p>
+
+<h1>Disk info</h1>
+
+<p><a href="df.html">df -Th</a></p>
+
+<p><a id="shutdownlink" onclick="shutdown_confirm()">shutdown</button></p>
+
+</body>
+</html>
